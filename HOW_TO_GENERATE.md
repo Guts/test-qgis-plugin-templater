@@ -20,5 +20,5 @@ pre-commit run -a
 ```sh
 git add .
 git commit -m "Testing QGIS plugin boilerplate from QGIS Plugin Templater (Oslandia). `date +'%Y-%m-%d %H:%M:%S'`"
-git push -u origin main
+git push -f -u origin main
 ```
