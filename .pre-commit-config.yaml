@@ -46,7 +46,7 @@ repos:
     rev: 6.0.0
     hooks:
       - id: flake8
-        files: ^test_templater_github/.*\.py$
+        files: ^qgis_plugin_templater_test_github/.*\.py$
         additional_dependencies: ["flake8-qgis<2"]
         args:
           [
