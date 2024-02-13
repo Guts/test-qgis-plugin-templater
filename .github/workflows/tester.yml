@@ -58,9 +58,9 @@ jobs:
         PYTHONPATH: "/usr/share/qgis/python/plugins:/usr/share/qgis/python:."
         QT_QPA_PLATFORM: "offscreen"
         WITH_PYTHON_PEP: false
-        volumes:
-          - ${{ github.workspace }}/${{ env.PROJECT_FOLDER }}:/tests_directory/${{ env.PROJECT_FOLDER }}
-          - /tmp/.X11-unix:/tmp/.X11-unix
+      volumes:
+        - ${{ github.workspace }}/${{ env.PROJECT_FOLDER }}:/tests_directory/${{ env.PROJECT_FOLDER }}
+        - /tmp/.X11-unix:/tmp/.X11-unix
 
     steps:
       - name: Get source code
