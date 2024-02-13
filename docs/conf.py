@@ -15,7 +15,7 @@ sys.path.insert(0, path.abspath(".."))  # move into project package
 import sphinx_rtd_theme  # noqa: F401 theme of Read the Docs
 
 # Package
-from test_templater_github import __about__
+from qgis_plugin_templater_test_github import __about__
 
 # -- Build environment -----------------------------------------------------
 on_rtd = environ.get("READTHEDOCS", None) == "True"

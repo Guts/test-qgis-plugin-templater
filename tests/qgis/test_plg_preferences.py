@@ -15,8 +15,8 @@
 from qgis.testing import unittest
 
 # project
-from test_templater_github.__about__ import __version__
-from test_templater_github.toolbelt.preferences import PlgSettingsStructure
+from qgis_plugin_templater_test_github.__about__ import __version__
+from qgis_plugin_templater_test_github.toolbelt.preferences import PlgSettingsStructure
 
 # ############################################################################
 # ########## Classes #############

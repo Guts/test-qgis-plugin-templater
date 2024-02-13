@@ -21,7 +21,7 @@
             "label": "Translation Update",
             "type": "shell",
             "linux": {
-                "command": "pylupdate5 -verbose test_templater_github/resources/i18n/plugin_translation.pro"
+                "command": "pylupdate5 -verbose qgis_plugin_templater_test_github/resources/i18n/plugin_translation.pro"
             },
             "problemMatcher": []
         },
@@ -29,7 +29,7 @@
             "label": "Translation Compile",
             "type": "shell",
             "linux": {
-                "command": "lrelease test_templater_github/resources/i18n/*.ts "
+                "command": "lrelease qgis_plugin_templater_test_github/resources/i18n/*.ts "
             },
             "problemMatcher": []
         }

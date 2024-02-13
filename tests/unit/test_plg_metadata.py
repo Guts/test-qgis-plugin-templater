@@ -18,7 +18,7 @@ from pathlib import Path
 from packaging.version import parse
 
 # project
-from test_templater_github import __about__
+from qgis_plugin_templater_test_github import __about__
 
 # ############################################################################
 # ########## Classes #############
