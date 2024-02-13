@@ -59,7 +59,7 @@ jobs:
         QT_QPA_PLATFORM: "offscreen"
         WITH_PYTHON_PEP: false
       volumes:
-        - ${{ github.workspace }}/${{ env.PROJECT_FOLDER }}:/tests_directory/${{ env.PROJECT_FOLDER }}
+        - ${{ github.workspace }}/$PROJECT_FOLDER:/tests_directory/$PROJECT_FOLDER
         - /tmp/.X11-unix:/tmp/.X11-unix
 
     steps:
