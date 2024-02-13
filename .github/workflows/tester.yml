@@ -52,17 +52,22 @@ jobs:
       image: qgis/qgis:release-3_28
       env:
         CI: true
-        DISPLAY: ":1"
+        DISPLAY: ":99"
         MUTE_LOGS: true
         NO_MODALS: 1
         PYTHONPATH: "/usr/share/qgis/python/plugins:/usr/share/qgis/python:."
         QT_QPA_PLATFORM: "offscreen"
         WITH_PYTHON_PEP: false
-        options: -v /tmp/.X11-unix:/tmp/.X11-unix -v ${{ github.workspace }}:/tests_directory
+        volumes:
+          - ${{ github.workspace }}/${{ env.PROJECT_FOLDER }}:/tests_directory/${{ env.PROJECT_FOLDER }}
+          - /tmp/.X11-unix:/tmp/.X11-unix
 
     steps:
       - name: Get source code
         uses: actions/checkout@v4
+
+      - name: Check for plugin files
+        run: ls -r /tests_directory
 
       - name: Print QGIS version
         run: qgis --version
