@@ -43,7 +43,6 @@ tooling:
   - changed-files:
     - any-glob-to-any-file:
         - .pre-commit-config.yaml
-        -
         - setup.cfg
 
 UI:
