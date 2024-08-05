@@ -1,8 +1,11 @@
 # How to generate
 
+> Commands on Ubuntu 22.04. Adapt to your system.
+
 Requirements:
 
 - Git
+- Cookiecutter (preferally installed with pipx)
 - Python >= 3.9
 - rsync
 
@@ -14,7 +17,6 @@ cd ~/Git/Perso/qgis-plugin-templater-github
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -U pip setuptools wheel
-python -m pip install --upgrade "cookiecutter>=2.5"
 ```
 
 Run templater:
