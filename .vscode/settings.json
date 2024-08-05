@@ -5,6 +5,7 @@
     "files.associations": {
         "./requirements/*.txt": "pip-requirements",
         "metadata.txt": "ini",
+        "**/*.model3": "xml",
         "**/*.ts": "xml",
         "**/*.ui": "xml"
     },
@@ -18,7 +19,7 @@
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
+            "source.organizeImports": true
         },
         "editor.rulers": [
             88
