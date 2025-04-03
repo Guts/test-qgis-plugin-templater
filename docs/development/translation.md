@@ -10,14 +10,25 @@ sudo apt install qttools5-dev-tools
 
 ## Workflow
 
+1. Generate the `plugin_translation.pro` file:
+
+    ```bash
+    python scripts/generate_translation_profile.py
+    ```
+
 1. Update `.ts` files:
 
     ```bash
     pylupdate5 -noobsolete -verbose qgis_plugin_templater_test_github/resources/i18n/plugin_translation.pro
     ```
 
-2. Translate your text using QLinguist or directly into `.ts` files.
-3. Compile it:
+1. Translate your text using QLinguist or directly into `.ts` files. Launching it through command-line is possible:
+
+    ```bash
+    linguist qgis_plugin_templater_test_github/resources/i18n/*.ts
+    ```
+
+1. Compile it:
 
     ```bash
     lrelease qgis_plugin_templater_test_github/resources/i18n/*.ts

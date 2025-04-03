@@ -12,14 +12,14 @@
     // Python
     "python.analysis.autoFormatStrings": false, // breaking PyQt translation
     "python.analysis.typeCheckingMode": "basic",
-    "python.defaultInterpreterPath": ".venv/bin/python",
+    // "python.defaultInterpreterPath": ".venv/bin/python",
     "python.terminal.activateEnvInCurrentTerminal": true,
     "python.terminal.activateEnvironment": true,
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
+            "source.organizeImports":"explicit"
         },
         "editor.rulers": [
             88

@@ -16,7 +16,7 @@ Unreleased
 
 -->
 
-## 0.1.0 - 2024-08-05
+## 0.1.0 - 2025-04-03
 
 - First release
 - Generated with the [QGIS Plugins templater](https://oslandia.gitlab.io/qgis/template-qgis-plugin/)

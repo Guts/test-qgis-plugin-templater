@@ -59,7 +59,7 @@ The documentation is generated using Sphinx and is automatically generated throu
 
 - homepage: <https://github.com/Guts/test-qgis-plugin-templater>
 - repository: <https://github.com/Guts/test-qgis-plugin-templater>
-- tracker: <https://github.com/Guts/test-qgis-plugin-templater/issues>
+- tracker: <https://github.com/Guts/test-qgis-plugin-templater/issues/>
 
 ----
 

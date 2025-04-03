@@ -12,7 +12,7 @@ author=Julien M.
 email=julien.moura@oslandia.com
 homepage=https://github.com/Guts/test-qgis-plugin-templater
 repository=https://github.com/Guts/test-qgis-plugin-templater
-tracker=https://github.com/Guts/test-qgis-plugin-templater/issues
+tracker=https://github.com/Guts/test-qgis-plugin-templater/issues/
 
 # experimental flag
 deprecated=False
