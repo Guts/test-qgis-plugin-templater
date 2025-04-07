@@ -23,8 +23,6 @@ from qgis_plugin_templater_test_github.__about__ import (
     __uri_homepage__,
 )
 from qgis_plugin_templater_test_github.gui.dlg_settings import PlgOptionsFactory
-
-
 from qgis_plugin_templater_test_github.toolbelt import PlgLogger
 
 # ############################################################################
@@ -42,7 +40,6 @@ class QgisPluginTemplaterTestGithubPlugin:
         """
         self.iface = iface
         self.log = PlgLogger().log
-        
 
         # translation
         # initialize the locale
@@ -50,9 +47,9 @@ class QgisPluginTemplaterTestGithubPlugin:
             0:2
         ]
         locale_path: Path = (
-            DIR_PLUGIN_ROOT 
-            / "resources" 
-            / "i18n" 
+            DIR_PLUGIN_ROOT
+            / "resources"
+            / "i18n"
             / f"{__title__.lower()}_{self.locale}.qm"
         )
         self.log(message=f"Translation: {self.locale}, {locale_path}", log_level=4)
@@ -93,8 +90,6 @@ class QgisPluginTemplaterTestGithubPlugin:
         self.iface.addPluginToMenu(__title__, self.action_settings)
         self.iface.addPluginToMenu(__title__, self.action_help)
 
-        
-
         # -- Help menu
 
         # documentation
@@ -111,8 +106,6 @@ class QgisPluginTemplaterTestGithubPlugin:
         self.iface.pluginHelpMenu().addAction(
             self.action_help_plugin_menu_documentation
         )
-
-    
 
     def tr(self, message: str) -> str:
         """Get the translation for a string using Qt translation API.
@@ -133,8 +126,6 @@ class QgisPluginTemplaterTestGithubPlugin:
 
         # -- Clean up preferences panel in QGIS settings
         self.iface.unregisterOptionsWidgetFactory(self.options_factory)
-
-        
 
         # remove from QGIS help/extensions menu
         if self.action_help_plugin_menu_documentation:

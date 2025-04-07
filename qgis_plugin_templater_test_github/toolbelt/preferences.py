@@ -51,6 +51,7 @@ class PlgSettingsStructure:
     debug_mode: bool = False
     version: str = __version__
 
+
 class PlgOptionsManager:
     @staticmethod
     def get_plg_settings() -> PlgSettingsStructure:

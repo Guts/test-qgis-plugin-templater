@@ -1,14 +1,14 @@
 #! python3  # noqa E265
 
 """
-    Usage from the repo root folder:
+Usage from the repo root folder:
 
-    .. code-block:: bash
+.. code-block:: bash
 
-        # for whole tests
-        python -m unittest tests.qgis.test_plg_preferences
-        # for specific test
-        python -m unittest tests.qgis.test_plg_preferences.TestPlgPreferences.test_plg_preferences_structure
+    # for whole tests
+    python -m unittest tests.qgis.test_plg_preferences
+    # for specific test
+    python -m unittest tests.qgis.test_plg_preferences.TestPlgPreferences.test_plg_preferences_structure
 """
 
 # standard library
@@ -43,7 +43,6 @@ class TestPlgPreferences(unittest.TestCase):
         self.assertTrue(hasattr(settings, "version"))
         self.assertIsInstance(settings.version, str)
         self.assertEqual(settings.version, __version__)
-
 
     def test_bool_env_variable(self):
         """Test settings with environment value."""
@@ -91,6 +90,7 @@ class TestPlgPreferences(unittest.TestCase):
         ):
             settings = manager.get_plg_settings()
             self.assertEqual(settings.debug_mode, False)
+
 
 # ############################################################################
 # ####### Stand-alone run ########
