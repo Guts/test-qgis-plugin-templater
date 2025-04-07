@@ -11,9 +11,8 @@ from qgis.gui import QgsMessageBar
 from qgis.PyQt.QtWidgets import QPushButton, QWidget
 from qgis.utils import iface
 
-import qgis_plugin_templater_test_github.toolbelt.preferences as plg_prefs_hdlr
-
 # project package
+import qgis_plugin_templater_test_github.toolbelt.preferences as plg_prefs_hdlr
 from qgis_plugin_templater_test_github.__about__ import __title__
 
 # ############################################################################

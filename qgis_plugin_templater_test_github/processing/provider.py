@@ -22,9 +22,7 @@ from qgis_plugin_templater_test_github.__about__ import (
 
 
 class QgisPluginTemplaterTestGithubProvider(QgsProcessingProvider):
-    """
-    Processing provider class.
-    """
+    """Processing provider class."""
 
     def loadAlgorithms(self):
         """Loads all algorithms belonging to this provider."""

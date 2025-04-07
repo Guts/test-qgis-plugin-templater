@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: qgis/qgis:release-3_28
+      image: qgis/qgis:release-{{ cookiecutter.qgis_version_min | replace(".", "_")}}
       env:
         CI: true
         DISPLAY: ":1"
