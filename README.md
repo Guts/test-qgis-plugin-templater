@@ -11,8 +11,10 @@
 
 ### Plugin
 
+> Here is a list of the options you picked when creating the plugin with the cookiecutter template.
+
 | Cookiecutter option | Picked value |
-| :-- | :--: |
+| :------------------ | :----------: |
 | Plugin name | qgis_plugin_templater_test_github |
 | Plugin name slugified | qgis_plugin_templater_test_github |
 | Plugin name class (used in code) | QgisPluginTemplaterTestGithub |
@@ -33,6 +35,7 @@
 | License | GPLv2+ |
 | Python linter | Flake8 |
 | CI/CD platform | GitHub |
+| Publish to <https://plugins.qgis.org> using CI/CD | false |
 | IDE | VSCode |
 
 ### Tooling
