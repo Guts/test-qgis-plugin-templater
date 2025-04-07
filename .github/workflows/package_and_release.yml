@@ -95,6 +95,8 @@ jobs:
           git add ${{ env.PROJECT_FOLDER }}/
 
       - name: Package the latest version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           qgis-plugin-ci package latest \
             --allow-uncommitted-changes \
