@@ -68,7 +68,7 @@ jobs:
         run: qgis --version
 
       - name: Setup plugin
-        run: qgis_setup.sh qgis_plugin_templater_test_github
+        run: qgis_setup.sh ${{ env.PROJECT_FOLDER }}/
 
 
       - name: Install Python requirements
