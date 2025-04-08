@@ -11,10 +11,8 @@
 
 ### Plugin
 
-> Here is a list of the options you picked when creating the plugin with the cookiecutter template.
-
 | Cookiecutter option | Picked value |
-| :------------------ | :----------: |
+| :-- | :--: |
 | Plugin name | qgis_plugin_templater_test_github |
 | Plugin name slugified | qgis_plugin_templater_test_github |
 | Plugin name class (used in code) | QgisPluginTemplaterTestGithub |
@@ -35,7 +33,6 @@
 | License | GPLv2+ |
 | Python linter | Flake8 |
 | CI/CD platform | GitHub |
-| Publish to <https://plugins.qgis.org> using CI/CD | false |
 | IDE | VSCode |
 
 ### Tooling
@@ -67,19 +64,19 @@ The documentation is generated using Sphinx and is automatically generated throu
 
 ----
 
-## Next steps
+## Next steps post generation
 
-### Set up development environment
+### 1. Set up development environment
 
 > Typical commands on Linux (Ubuntu).
 
-1. If you don't pick the `git init` option, initialize your local repository:
+1. If you didn't pick the `git init` option, initialize your local repository:
 
     ```sh
     git init
     ```
 
-1. Follow the [embedded documentation to set up your development environment](./docs/development/environment.md)
+1. Follow the [embedded documentation to set up your development environment](./docs/development/environment.md) to create  virtual environment and install development dependencies.
 1. Add all files to git index to prepare initial commit:
 
     ```sh
@@ -92,10 +89,35 @@ The documentation is generated using Sphinx and is automatically generated throu
     pre-commit run -a
     ```
 
-### Try to build documentation locally
+### 2. Build the documentation locally
 
 1. Have a look to the [plugin's metadata.txt file](qgis_plugin_templater_test_github/metadata.txt): review it, complete it or fix it if needed (URLs, etc.).
-1. Follow the [embedded documentation to build plugin documentation locally](./docs/development/environment.md)
+1. Follow the [embedded documentation to build plugin documentation locally](./docs/development/documentation.md)
+
+### 3. Prepare your remote repository
+
+1. If you did not yet, create a remote repository on your Git hosting platform (GitHub, GitLab, etc.)
+1. Create labels listed in [labeler.yml file](.github/labeler.yml) to make PR auto-labelling work.
+1. Switch the source of GitHub Pages to `GitHub Actions` in your repository settings <https://github.com/Guts/test-qgis-plugin-templatersettings/pages>
+1. Add the remote repository to your local repository:
+
+    ```sh
+    git remote add origin <your-remote-repository-url>
+    ```
+
+1. Commit changes:
+
+    ```sh
+    git commit -m "init(plugin): adding first files of qgis_plugin_templater_test_github" -m "generated with QGIS Plugin Templater (https://oslandia.gitlab.io/qgis/template-qgis-plugin)"
+    ```
+
+1. Push the initial commit to the remote repository:
+
+    ```sh
+    git push -u origin main
+    ```
+
+1. Create a new release following the [packaging/release guide](./docs/packaging.md) with the tag `0.1.0-beta1` to trigger the CI/CD pipeline and publish the plugin on the [official QGIS plugins repository](https://plugins.qgis.org/).
 
 ----
 

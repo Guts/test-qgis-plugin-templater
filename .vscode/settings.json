@@ -9,6 +9,16 @@
         "**/*.ts": "xml",
         "**/*.ui": "xml"
     },
+    // Markdown
+    "markdown.updateLinksOnFileMove.enabled": "prompt",
+    "markdown.updateLinksOnFileMove.enableForDirectories": true,
+    "markdown.validate.enabled": true,
+    "markdown.validate.fileLinks.markdownFragmentLinks": "warning",
+    "markdown.validate.fragmentLinks.enabled": "warning",
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+        "files.trimTrailingWhitespace": false,
+    },
     // Python
     "python.analysis.autoFormatStrings": false, // breaking PyQt translation
     "python.analysis.typeCheckingMode": "basic",
@@ -26,6 +36,8 @@
         ],
         "editor.wordWrapColumn": 88,
     },
+    "python.testing.unittestEnabled": true,
+    "python.testing.pytestEnabled": true,
     // Linter
 
     "flake8.args": [
@@ -33,9 +45,6 @@
         "--verbose"
     ],
 
-    // Tests
-    "python.testing.unittestEnabled": true,
-    "python.testing.pytestEnabled": true,
     // Extensions
     "autoDocstring.docstringFormat": "sphinx"
 }
