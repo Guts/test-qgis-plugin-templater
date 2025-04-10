@@ -1,8 +1,6 @@
 #! python3  # noqa: E265
 
-"""
-Main plugin module.
-"""
+"""Main plugin module."""
 
 # standard
 from functools import partial
@@ -93,7 +91,8 @@ class QgisPluginTemplaterTestGithubPlugin:
 
         # -- Menu
         self.iface.addPluginToMenu(__title__, self.action_settings)
-        self.iface.addPluginToMenu(__title__, self.action_help)  # -- Processing
+        self.iface.addPluginToMenu(__title__, self.action_help)
+        # -- Processing
         self.initProcessing()
 
         # -- Help menu
@@ -114,6 +113,7 @@ class QgisPluginTemplaterTestGithubPlugin:
         )
 
     def initProcessing(self):
+        """Initialize the processing provider."""
         self.provider = QgisPluginTemplaterTestGithubProvider()
         QgsApplication.processingRegistry().addProvider(self.provider)
 
@@ -136,6 +136,8 @@ class QgisPluginTemplaterTestGithubPlugin:
 
         # -- Clean up preferences panel in QGIS settings
         self.iface.unregisterOptionsWidgetFactory(self.options_factory)
+        # -- Unregister processing
+        QgsApplication.processingRegistry().removeProvider(self.provider)
 
         # remove from QGIS help/extensions menu
         if self.action_help_plugin_menu_documentation:
