@@ -7,6 +7,7 @@ Main plugin module.
 # standard
 from functools import partial
 from pathlib import Path
+from typing import Optional
 
 # PyQGIS
 from qgis.core import QgsApplication, QgsSettings
@@ -23,6 +24,9 @@ from qgis_plugin_templater_test_github.__about__ import (
     __uri_homepage__,
 )
 from qgis_plugin_templater_test_github.gui.dlg_settings import PlgOptionsFactory
+from qgis_plugin_templater_test_github.processing import (
+    QgisPluginTemplaterTestGithubProvider,
+)
 from qgis_plugin_templater_test_github.toolbelt import PlgLogger
 
 # ############################################################################
@@ -40,6 +44,7 @@ class QgisPluginTemplaterTestGithubPlugin:
         """
         self.iface = iface
         self.log = PlgLogger().log
+        self.provider: Optional[QgisPluginTemplaterTestGithubProvider] = None
 
         # translation
         # initialize the locale
@@ -88,7 +93,8 @@ class QgisPluginTemplaterTestGithubPlugin:
 
         # -- Menu
         self.iface.addPluginToMenu(__title__, self.action_settings)
-        self.iface.addPluginToMenu(__title__, self.action_help)
+        self.iface.addPluginToMenu(__title__, self.action_help)  # -- Processing
+        self.initProcessing()
 
         # -- Help menu
 
@@ -106,6 +112,10 @@ class QgisPluginTemplaterTestGithubPlugin:
         self.iface.pluginHelpMenu().addAction(
             self.action_help_plugin_menu_documentation
         )
+
+    def initProcessing(self):
+        self.provider = QgisPluginTemplaterTestGithubProvider()
+        QgsApplication.processingRegistry().addProvider(self.provider)
 
     def tr(self, message: str) -> str:
         """Get the translation for a string using Qt translation API.

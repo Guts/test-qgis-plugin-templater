@@ -17,7 +17,7 @@ tracker=https://github.com/Guts/test-qgis-plugin-templater/issues/
 # experimental flag
 deprecated=False
 experimental=True
-qgisMinimumVersion=3.40
+qgisMinimumVersion=3.34
 qgisMaximumVersion=3.99
 qt6_compatible=True
 

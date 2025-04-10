@@ -94,7 +94,8 @@ The documentation is generated using Sphinx and is automatically generated throu
 
 ### 2. Build the documentation locally
 
-1. Have a look to the [plugin's metadata.txt file](qgis_plugin_templater_test_github/metadata.txt): review it, complete it or fix it if needed (URLs, etc.).
+1. Have a look to the [plugin's metadata.txt file](qgis_plugin_templater_test_github/metadata.txt): review it, complete it or fix it if needed (URLs, etc.)., especially the `homepage` URL which should be to your GitLab or GitHub Pages.
+1. Change the plugin's icon stored in `qgis_plugin_templater_test_github/resources/images`
 1. Follow the [embedded documentation to build plugin documentation locally](./docs/development/documentation.md)
 
 ### 3. Prepare your remote repository
@@ -105,7 +106,7 @@ The documentation is generated using Sphinx and is automatically generated throu
 1. Add the remote repository to your local repository:
 
     ```sh
-    git remote add origin <your-remote-repository-url>
+    git remote add origin <https://github.com/Guts/test-qgis-plugin-templater>
     ```
 
 1. Commit changes:
@@ -120,7 +121,7 @@ The documentation is generated using Sphinx and is automatically generated throu
     git push -u origin main
     ```
 
-1. Create a new release following the [packaging/release guide](./docs/packaging.md) with the tag `0.1.0-beta1` to trigger the CI/CD pipeline and publish the plugin on the [official QGIS plugins repository](https://plugins.qgis.org/).
+1. Create a new release following the [packaging/release guide](./docs//development/packaging.md) with the tag `0.1.0-beta1` to trigger the CI/CD pipeline and publish the plugin on the [official QGIS plugins repository](https://plugins.qgis.org/) (if you picked up the option).
 
 ----
 

@@ -12,6 +12,14 @@ Using [qgis-venv-creator](https://github.com/GispoCoding/qgis-venv-creator) (see
 pipx run qgis-venv-creator --venv-name ".venv"
 ```
 
+Then enter into the virtual environment:
+
+```sh
+. .venv/bin/activate
+# or
+source .venv/bin/activate
+```
+
 Old school way:
 
 ```bash
