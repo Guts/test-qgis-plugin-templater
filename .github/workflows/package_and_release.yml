@@ -16,9 +16,6 @@ on:
     tags:
       - "*"
 
-  workflow_dispatch:
-
-
 # Allow one concurrent deployment per branch/pr
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -101,7 +98,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo $(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')
           qgis-plugin-ci package latest \
             --allow-uncommitted-changes \
             --plugin-repo-url $(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')

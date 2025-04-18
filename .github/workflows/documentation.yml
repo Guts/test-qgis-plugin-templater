@@ -2,10 +2,10 @@ name: "📚 Documentation"
 
 # Global environment variables
 env:
-  PROJECT_FOLDER: qgis_plugin_templater_test_github
-  PYTHON_VERSION: 3.9
   CONDITION_IS_PUSH: ${{ github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main') }}
   CONDITION_IS_WORKFLOW_RUN: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }}
+  PROJECT_FOLDER: qgis_plugin_templater_test_github
+  PYTHON_VERSION: 3.12
 
 # This workflow is triggered on:
 on:
@@ -32,8 +32,6 @@ on:
   workflow_dispatch:
 
   workflow_run:
-    branches:
-      - main
     workflows:
       - "📦 Package & 🚀 Release"
     types:
