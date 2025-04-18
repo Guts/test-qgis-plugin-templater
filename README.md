@@ -102,7 +102,7 @@ The documentation is generated using Sphinx and is automatically generated throu
 
 1. If you did not yet, create a remote repository on your Git hosting platform (GitHub, GitLab, etc.)
 1. Create labels listed in [labeler.yml file](.github/labeler.yml) to make PR auto-labelling work.
-1. Switch the source of GitHub Pages to `GitHub Actions` in your repository settings <https://github.com/Guts/test-qgis-plugin-templatersettings/pages>
+1. Switch the source of GitHub Pages to `GitHub Actions` in your repository settings <https://github.com/Guts/test-qgis-plugin-templater/settings/pages>
 1. Add the remote repository to your local repository:
 
     ```sh

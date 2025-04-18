@@ -1,5 +1,11 @@
 name: "📚 Documentation"
 
+# Global environment variables
+env:
+  PROJECT_FOLDER: qgis_plugin_templater_test_github
+  PYTHON_VERSION: 3.9
+
+# This workflow is triggered on:
 on:
   push:
     branches:
@@ -40,9 +46,6 @@ permissions:
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
-
-env:
-  PYTHON_VERSION: 3.9
 
 jobs:
   build:
