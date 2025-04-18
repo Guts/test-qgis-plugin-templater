@@ -83,7 +83,7 @@ jobs:
       run: sphinx-build -b html -j auto -d docs/_build/cache -q docs docs/_build/html
 
     - name: Download artifact from build workflow
-      if: ${{ env.IS_PUSH || env.IS_WORKFLOW_RUN }}
+      if: ${{ env.CONDITION_IS_PUSH || env.CONDITION_IS_WORKFLOW_RUN }}
       uses: dawidd6/action-download-artifact@v9
       with:
         allow_forks: false
