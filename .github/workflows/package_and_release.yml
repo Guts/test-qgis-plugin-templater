@@ -107,7 +107,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PROJECT_FOLDER }}-latest
-          path: ${{ env.PROJECT_FOLDER }}.*.zip
+          path: |
+            plugins.xml
+            ${{ env.PROJECT_FOLDER }}.*.zip
           if-no-files-found: error
 
   # -- ONLY TAGS ----------------------------------------------------------------------
