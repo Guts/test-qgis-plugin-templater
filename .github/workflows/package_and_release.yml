@@ -16,6 +16,8 @@ on:
     tags:
       - "*"
 
+  workflow_dispatch:
+
 
 # Allow one concurrent deployment per branch/pr
 concurrency:
