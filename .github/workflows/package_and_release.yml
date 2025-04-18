@@ -99,6 +99,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          echo $(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')
           qgis-plugin-ci package latest \
             --allow-uncommitted-changes \
             --plugin-repo-url $(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')
