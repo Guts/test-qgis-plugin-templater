@@ -10,7 +10,7 @@ tags=topic1,topic2
 # credits and contact
 author=Julien M.
 email=julien.moura@oslandia.com
-homepage=https://github.com/Guts/test-qgis-plugin-templater
+homepage=https://guts.github.io/test-qgis-plugin-templater/
 repository=https://github.com/Guts/test-qgis-plugin-templater
 tracker=https://github.com/Guts/test-qgis-plugin-templater/issues/
 

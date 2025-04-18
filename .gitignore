@@ -126,5 +126,6 @@ dmypy.json
 .pyre/
 
 # -- CUSTOM ----
+qgis_plugin_templater_test_github/gui/*.db
 *.zip
 *.qm
