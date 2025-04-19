@@ -1,6 +1,6 @@
 # qgis_plugin_templater_test_github - QGIS Plugin
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
@@ -42,7 +42,7 @@
 
 This project is configured with the following tools:
 
-- [Black](https://black.readthedocs.io/en/stable/) to format the code without any existential question
+- [ruff](https://docs.astral.sh/ruff/formatter/) to format the code without any existential question
 - [iSort](https://pycqa.github.io/isort/) to sort the Python imports
 
 Code rules are enforced with [pre-commit](https://pre-commit.com/) hooks.  
@@ -59,11 +59,7 @@ If you mean to deploy it to the [official QGIS plugins repository](https://plugi
 
 ### Documentation
 
-The documentation is generated using Sphinx and is automatically generated through the CI and published on Pages.
-
-- homepage: <https://github.com/Guts/test-qgis-plugin-templater>
-- repository: <https://github.com/Guts/test-qgis-plugin-templater>
-- tracker: <https://github.com/Guts/test-qgis-plugin-templater/issues/>
+The documentation is located in `docs` subfolder, written in Markdown using [myst-parser](https://myst-parser.readthedocs.io/), structured in two main parts, Usage and Contribution, generated using Sphinx (have a look to [the configuration file](./docs/conf.py)) and is automatically generated through the CI and published on Pages: <https://github.com/Guts/test-qgis-plugin-templater> (see [post generation steps](#2-build-the-documentation-locally) below).
 
 ----
 
@@ -89,12 +85,20 @@ The documentation is generated using Sphinx and is automatically generated throu
 1. Run the git hooks to ensure that everything runs OK and to start developing on quality standards:
 
     ```sh
+    pre-commit autoupdate
+    pre-commit install
     pre-commit run -a
+    # don't be shy, run it twice
     ```
 
-### 2. Build the documentation locally
+### 2. Adjust URL and build the documentation locally
+
+> ![NOTE]
+> Since it's very hard to determine which the final documentation URL will be, the templater does not set it up. You have to do it manually.
+> The final URL should be something like this: <https://{user_org}.github.io/{project_slug}>. You can find it in Pages settings of your repository: <https://github.com/Guts/test-qgis-plugin-templater/settings/pages>.
 
 1. Have a look to the [plugin's metadata.txt file](qgis_plugin_templater_test_github/metadata.txt): review it, complete it or fix it if needed (URLs, etc.)., especially the `homepage` URL which should be to your GitLab or GitHub Pages.
+1. Update the base URL of custom repository in [installation doc page](./docs/usage/installation.md).
 1. Change the plugin's icon stored in `qgis_plugin_templater_test_github/resources/images`
 1. Follow the [embedded documentation to build plugin documentation locally](./docs/development/documentation.md)
 
@@ -106,7 +110,7 @@ The documentation is generated using Sphinx and is automatically generated throu
 1. Add the remote repository to your local repository:
 
     ```sh
-    git remote add origin <https://github.com/Guts/test-qgis-plugin-templater>
+    git remote add origin https://github.com/Guts/test-qgis-plugin-templater
     ```
 
 1. Commit changes:
