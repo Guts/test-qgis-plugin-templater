@@ -93,7 +93,7 @@ The documentation is located in `docs` subfolder, written in Markdown using [mys
 
 ### 2. Adjust URL and build the documentation locally
 
-> ![NOTE]
+> [!NOTE]
 > Since it's very hard to determine which the final documentation URL will be, the templater does not set it up. You have to do it manually.
 > The final URL should be something like this: <https://{user_org}.github.io/{project_slug}>. You can find it in Pages settings of your repository: <https://github.com/Guts/test-qgis-plugin-templater/settings/pages>.
 
