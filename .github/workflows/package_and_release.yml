@@ -164,3 +164,4 @@ jobs:
           --allow-uncommitted-changes
           --create-plugin-repo
           --github-token ${{ secrets.GITHUB_TOKEN }}
+          --verbose
