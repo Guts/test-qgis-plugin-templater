@@ -114,10 +114,10 @@ jobs:
   release:
     name: "🚀 Release on tag"
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     needs:
       - translation
+    permissions:
+      contents: write
 
     if: startsWith(github.ref, 'refs/tags/')
 
@@ -130,7 +130,7 @@ jobs:
         with:
           cache: "pip"
           cache-dependency-path: "requirements/packaging.txt"
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: "3.12"
 
       - name: Install project requirements
         run: |
