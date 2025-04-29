@@ -160,8 +160,8 @@ jobs:
       - name: Deploy plugin
         run: >-
           qgis-plugin-ci
+          --verbose
           release ${GITHUB_REF/refs\/tags\//}
           --allow-uncommitted-changes
           --create-plugin-repo
           --github-token ${{ secrets.GITHUB_TOKEN }}
-          --verbose
