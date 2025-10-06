@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Optional
 
 # PyQGIS
-from qgis.core import QgsApplication, QgsSettings
+from qgis.core import Qgis, QgsApplication, QgsSettings
 from qgis.gui import QgisInterface
 from qgis.PyQt.QtCore import QCoreApplication, QLocale, QTranslator, QUrl
 from qgis.PyQt.QtGui import QDesktopServices, QIcon
@@ -55,7 +55,10 @@ class QgisPluginTemplaterTestGithubPlugin:
             / "i18n"
             / f"{__title__.lower()}_{self.locale}.qm"
         )
-        self.log(message=f"Translation: {self.locale}, {locale_path}", log_level=4)
+        self.log(
+            message=f"Translation: {self.locale}, {locale_path}",
+            log_level=Qgis.MessageLevel.NoLevel,
+        )
         if locale_path.exists():
             self.translator = QTranslator()
             self.translator.load(str(locale_path.resolve()))
@@ -157,12 +160,12 @@ class QgisPluginTemplaterTestGithubPlugin:
         try:
             self.log(
                 message=self.tr("Everything ran OK."),
-                log_level=3,
+                log_level=Qgis.MessageLevel.Success,
                 push=False,
             )
         except Exception as err:
             self.log(
                 message=self.tr("Houston, we've got a problem: {}".format(err)),
-                log_level=2,
+                log_level=Qgis.MessageLevel.Critical,
                 push=True,
             )

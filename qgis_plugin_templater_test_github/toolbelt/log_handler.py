@@ -99,26 +99,26 @@ class PlgLogger(logging.Handler):
             )
 
             # LEGACY - using integers:
-            log(message="Plugin loaded - INFO", log_level=0, push=False)
-            log(message="Plugin loaded - WARNING", log_level=1, push=1, duration=5)
-            log(message="Plugin loaded - ERROR", log_level=2, push=1, duration=0)
+            log(message="Plugin loaded - INFO", log_level=Qgis.MessageLevel.Info, push=False)
+            log(message="Plugin loaded - WARNING", log_level=Qgis.MessageLevel.Warning, push=1, duration=5)
+            log(message="Plugin loaded - ERROR", log_level=Qgis.MessageLevel.Critical, push=1, duration=0)
             log(
                 message="Plugin loaded - SUCCESS",
-                log_level=3,
+                log_level=Qgis.MessageLevel.Success,
                 push=1,
                 duration=10,
                 button=True
             )
             log(
                 message="Plugin loaded",
-                log_level=2,
+                log_level=Qgis.MessageLevel.Critical,
                 push=1,
                 duration=0
                 button=True,
                 button_label=self.tr("See details"),
                 button_more_text=detailed_error_message
             )
-            log(message="Plugin loaded - TEST", log_level=4, push=0)
+            log(message="Plugin loaded - TEST", log_level=Qgis.MessageLevel.NoLevel, push=0)
         """
         # if not debug mode and not push, let's ignore INFO, SUCCESS and TEST
         debug_mode = plg_prefs_hdlr.PlgOptionsManager.get_plg_settings().debug_mode

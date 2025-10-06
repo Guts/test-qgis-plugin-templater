@@ -187,7 +187,7 @@
                                     <bool>true</bool>
                                 </property>
                                 <property name="text">
-                                    <string>Reset setttings to factory defaults</string>
+                                    <string>Reset settings to factory defaults</string>
                                 </property>
                             </widget>
                         </item>

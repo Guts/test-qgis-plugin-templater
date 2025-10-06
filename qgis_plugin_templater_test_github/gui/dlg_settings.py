@@ -58,7 +58,7 @@ class ConfigOptionsPage(FORM_CLASS, QgsOptionsPageWidget):
             "> Reported from plugin settings\n\n"
             f"- operating system: {platform.system()} "
             f"{platform.release()}_{platform.version()}\n"
-            f"- QGIS: {Qgis.QGIS_VERSION}"
+            f"- QGIS: {Qgis.QGIS_VERSION}\n"
             f"- plugin version: {__version__}\n"
         )
 
@@ -108,7 +108,7 @@ class ConfigOptionsPage(FORM_CLASS, QgsOptionsPageWidget):
         if __debug__:
             self.log(
                 message="DEBUG - Settings successfully saved.",
-                log_level=4,
+                log_level=Qgis.MessageLevel.NoLevel,
             )
 
     def load_settings(self):

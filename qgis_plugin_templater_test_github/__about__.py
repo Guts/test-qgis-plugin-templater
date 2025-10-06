@@ -70,6 +70,11 @@ __keywords__: list = [
     t.strip() for t in __plugin_md__.get("general").get("repository").split("tags")
 ]
 __license__: str = "GPLv2+"
+__plugin_dependencies__ = [
+    dep.strip()
+    for dep in __plugin_md__.get("general").get("plugin_dependencies", "").split(",")
+    if dep.strip()
+]
 __summary__: str = "{}\n{}".format(
     __plugin_md__.get("general").get("description"),
     __plugin_md__.get("general").get("about"),
@@ -111,3 +116,4 @@ if __name__ == "__main__":
         )
     )
     print(__title_clean__)
+    print(f"Depends on other plugins: {__plugin_dependencies__}")

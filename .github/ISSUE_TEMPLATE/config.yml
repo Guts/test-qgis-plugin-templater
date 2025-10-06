@@ -2,5 +2,5 @@ blank_issues_enabled: true
 
 contact_links:
   - name: Documentation
-    url: https://github.com/Guts/test-qgis-plugin-templater
+    url: https://github.com/Guts/test-qgis-plugin-templater/pages
     about: Please read carefully the documentation before to submit an issue.

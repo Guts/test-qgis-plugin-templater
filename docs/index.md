@@ -23,6 +23,7 @@ Installation <usage/installation>
 caption: Contribution guide
 maxdepth: 1
 ---
+development/code_of_conduct
 development/contribute
 development/environment
 development/documentation

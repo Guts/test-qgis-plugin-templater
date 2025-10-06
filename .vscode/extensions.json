@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "charliermarsh.ruff",
     "davidanson.vscode-markdownlint",
     "ms-python.black-formatter",
     "ms-python.flake8",

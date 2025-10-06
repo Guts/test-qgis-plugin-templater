@@ -2,7 +2,7 @@ exclude: ".venv|__pycache__|tests/dev/|tests/fixtures/"
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v4.5.0
     hooks:
       - id: check-added-large-files
         args:
@@ -22,7 +22,7 @@ repos:
           - --markdown-linebreak-ext=md
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.11.6"
+    rev: "v0.11.2"
     hooks:
       - id: ruff
         args:
@@ -39,14 +39,12 @@ repos:
           - python
           - pyi
 
-  # Disabled since ruff does the job and both could conflict.
-  # Uncomment if you want to use both or black instead of ruff.
-  # - repo: https://github.com/python/black
-  #   rev: 25.1.0
-  #   hooks:
-  #     - id: black
-  #       args:
-  #         - --target-version=py39
+  - repo: https://github.com/python/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+        args:
+          - --target-version=py39
 
   # Disabled until PyQt translation support f-strings
   # - repo: https://github.com/asottile/pyupgrade
