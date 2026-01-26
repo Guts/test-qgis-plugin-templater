@@ -127,8 +127,6 @@ The documentation is located in `docs` subfolder, written in Markdown using [mys
 1. Create a new release following the [packaging/release guide](./docs//development/packaging.md) with the tag `0.1.0-beta1` to trigger the CI/CD pipeline and publish the plugin on the [official QGIS plugins repository](https://plugins.qgis.org/) (if you picked up the option).
 
 
-1. After publishing the plugin for the first time on the official QGIS repository, remember to indicate the plugin ID in the [documentation configuration](./docs/conf.py).
-
 
 ----
 

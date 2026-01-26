@@ -2,7 +2,8 @@
 
 > **Description:** {{ description }}  
 > **Author and contributors:** {{ author }}  
-> **Plugin version:** {{ version }}  
+> **Latest version released:** {{ release_version }}  
+> **Actual development version:** {{ version }}  
 > **QGIS minimum version:** {{ qgis_version_min }}  
 > **QGIS maximum version:** {{ qgis_version_max }}  
 > **Source code:** {{ repo_url }}  
