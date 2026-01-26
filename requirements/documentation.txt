@@ -1,7 +1,8 @@
 # Documentation (for devs)
 # -----------------------
 
+keepachangelog>=2.0.0
 myst-parser[linkify]>=2
 sphinx-autobuild>=2024
-sphinx-copybutton>=0.5,<1
+sphinx-copybutton>=0.5
 sphinx-rtd-theme>=2

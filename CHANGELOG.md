@@ -4,19 +4,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 <!--
 
-Unreleased
-
-## version_tag - YYYY-DD-mm
-
-### Added
-
-### Changed
-
-### Removed
+## Unreleased - YYYY-DD-mm
 
 -->
 
-## 0.1.0 - 2025-10-06
+## 0.1.0 - 2026-01-26
 
 - First release
 - Generated with the [QGIS Plugins templater](https://oslandia.gitlab.io/qgis/template-qgis-plugin/)
