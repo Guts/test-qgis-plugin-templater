@@ -4,7 +4,7 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-
+[![pylint](https://github.com/Guts/test-qgis-plugin-templaterlint/pylint.svg)](https://github.com/Guts/test-qgis-plugin-templater/pageslint/)
 [![flake8](https://img.shields.io/badge/linter-flake8-green)](https://flake8.pycqa.org/)
 
 ## Generated options
@@ -33,7 +33,7 @@
 | Git repository URL | https://github.com/Guts/test-qgis-plugin-templater |
 | Git default branch | main |
 | License | GPLv2+ |
-| Python linter | Flake8 |
+| Python linter | both |
 | CI/CD platform | GitHub |
 | Publish to <https://plugins.qgis.org> using CI/CD | False |
 | IDE | VSCode |
@@ -46,7 +46,7 @@ This project is configured with the following tools:
 - [iSort](https://pycqa.github.io/isort/) to sort the Python imports
 
 Code rules are enforced with [pre-commit](https://pre-commit.com/) hooks.  
-Static code analysis is based on: Flake8
+Static code analysis is based on: both
 
 See also: [contribution guidelines](CONTRIBUTING.md).
 
