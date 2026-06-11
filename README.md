@@ -27,7 +27,7 @@
 | Author name | Julien M. |
 | Author organization | Oslandia |
 | Author email | julien.moura@oslandia.com |
-| Minimum QGIS version | 3.40 |
+| Minimum QGIS version | 3.44.4 |
 | Maximum QGIS version | 4.10.16 |
 | Supports QGIS 4 (Qt5 and Qt6) | True |
 | Git repository URL | https://github.com/Guts/test-qgis-plugin-templater |
