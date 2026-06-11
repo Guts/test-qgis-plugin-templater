@@ -50,7 +50,9 @@ def plugin_metadata_as_dict() -> dict:
         config.read(PLG_METADATA_FILE.resolve(), encoding="UTF-8")
         return {s: dict(config.items(s)) for s in config.sections()}
     else:
-        raise IOError("Plugin metadata.txt not found at: %s" % PLG_METADATA_FILE)
+        raise FileNotFoundError(
+            f"Plugin metadata.txt not found at: {PLG_METADATA_FILE.resolve()}"
+        )
 
 
 # ############################################################################

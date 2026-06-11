@@ -53,7 +53,7 @@ class ConfigOptionsPage(QgsOptionsPageWidget):
 
         # load UI and set objectName
         uic.loadUi(Path(__file__).parent / f"{Path(__file__).stem}.ui", self)
-        self.setObjectName("mOptionsPage{}".format(__title__))
+        self.setObjectName(f"mOptionsPage{__title__}")
         self.initGui()
 
     def initGui(self) -> None:  # noqa: N802

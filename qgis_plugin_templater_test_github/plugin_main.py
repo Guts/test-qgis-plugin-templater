@@ -5,7 +5,6 @@
 # standard
 from functools import partial
 from pathlib import Path
-from typing import Optional
 
 # PyQGIS
 from qgis.core import Qgis, QgsApplication, QgsSettings
@@ -42,7 +41,7 @@ class QgisPluginTemplaterTestGithubPlugin:
         """
         self.iface = iface
         self.log = PlgLogger().log
-        self.provider: Optional[QgisPluginTemplaterTestGithubProvider] = None
+        self.provider: QgisPluginTemplaterTestGithubProvider | None = None
 
         # translation
         # initialize the locale

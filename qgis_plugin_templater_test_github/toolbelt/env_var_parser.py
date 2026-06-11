@@ -1,5 +1,5 @@
 import os
-from typing import Type, TypeVar
+from typing import TypeVar
 
 T = TypeVar("T")
 
@@ -28,13 +28,13 @@ class EnvVarParser:
         return EnvVarParser._convert_single(value, type(default), default)
 
     @staticmethod
-    def _convert_single(value: str, expected_type: Type[T], default: T) -> T:
+    def _convert_single(value: str, expected_type: type[T], default: T) -> T:
         """Converts a string into a single value of the expected type.
 
         :param value: value as string
         :type value: str
         :param expected_type: expected type for conversion (int, float, bool)
-        :type expected_type: Type[T]
+        :type expected_type: type[T]
         :param default: default value in case of conversion failure
         :type default: T
         :raises TypeError: Exception raised when expected_type is not compatible

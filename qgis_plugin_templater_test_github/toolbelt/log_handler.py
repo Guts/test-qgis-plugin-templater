@@ -2,8 +2,8 @@
 
 # standard library
 import logging
+from collections.abc import Callable
 from functools import partial
-from typing import Callable, Optional
 
 # PyQGIS
 from qgis.core import Qgis, QgsMessageLog, QgsMessageOutput
@@ -29,14 +29,14 @@ class PlgLogger(logging.Handler):
         application: str = __title__,
         log_level: Qgis.MessageLevel = Qgis.MessageLevel.Info,
         push: bool = False,
-        duration: Optional[int] = None,
+        duration: int | None = None,
         # widget
         button: bool = False,
-        button_text: Optional[str] = None,
-        button_more_text: Optional[str] = None,
-        button_connect: Optional[Callable] = None,
+        button_text: str | None = None,
+        button_more_text: str | None = None,
+        button_connect: Callable | None = None,
         # parent
-        parent_location: Optional[QWidget] = None,
+        parent_location: QWidget | None = None,
     ):
         """Send messages to QGIS messages windows and to the user as a message bar. \
         Plugin name is used as title. If debug mode is disabled, only warnings and \
