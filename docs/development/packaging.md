@@ -2,7 +2,7 @@
 
 ## Packaging
 
-This plugin is using the [qgis-plugin-ci](https://github.com/opengisch/qgis-plugin-ci/) tool to perform packaging operations.  
+This plugin is using the [qgis-plugin-ci](https://qgis.github.io/qgis-plugin-ci/) tool to perform packaging operations.  
 Under the hood, the package command is performing a `git archive` run based on `CHANGELOG.md`.
 
 Install additional dependencies:
@@ -27,7 +27,7 @@ Everything is done through the continuous deployment, sticking to a classic git 
 Here comes the process for a tag `X.y.z` (which has to be SemVer compliant):
 
 1. Add the new version to the `CHANGELOG.md`.You can write it manually or use the auto-generated release notes by Github:
-    1. Go to [project's releases](https://github.com/WhereGroup/profile_manager/releases) and click on `Draft a new release`
+    1. Go to your [project's releases](https://github.com/Guts/test-qgis-plugin-templaterreleases) and click on `Draft a new release`
     1. In `Choose a tag`, enter the new tag
     1. Click on `Generate release notes`
     1. Copy/paste the generated text from `## What's changed` until the line before `**Full changelog**:...` in the CHANGELOG.md replacing `What's changed` with the tag and the publication date.
