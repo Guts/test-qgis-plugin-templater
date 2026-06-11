@@ -8,6 +8,7 @@ Plugin settings form integrated into QGIS 'Options' menu.
 import platform
 from functools import partial
 from pathlib import Path
+from typing import TYPE_CHECKING
 from urllib.parse import quote
 
 # PyQGIS
@@ -16,6 +17,7 @@ from qgis.gui import QgsOptionsPageWidget, QgsOptionsWidgetFactory
 from qgis.PyQt import uic
 from qgis.PyQt.QtCore import QUrl
 from qgis.PyQt.QtGui import QDesktopServices, QIcon
+from qgis.PyQt.QtWidgets import QWidget
 
 # project
 from qgis_plugin_templater_test_github.__about__ import (
@@ -28,33 +30,36 @@ from qgis_plugin_templater_test_github.__about__ import (
 from qgis_plugin_templater_test_github.toolbelt import PlgLogger, PlgOptionsManager
 from qgis_plugin_templater_test_github.toolbelt.preferences import PlgSettingsStructure
 
-# ############################################################################
-# ########## Globals ###############
-# ##################################
-
-FORM_CLASS, _ = uic.loadUiType(
-    Path(__file__).parent / "{}.ui".format(Path(__file__).stem)
-)
-
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 # ############################################################################
 # ########## Classes ###############
 # ##################################
 
 
-class ConfigOptionsPage(FORM_CLASS, QgsOptionsPageWidget):
+class ConfigOptionsPage(QgsOptionsPageWidget):
     """Settings form embedded into QGIS 'options' menu."""
 
-    def __init__(self, parent):
+    def __init__(self, parent: QWidget) -> None:
+        """Settings dialog constructor.
+
+        :param QgsOptionsPageWidget parent: base class for widgets for pages included
+            in the options dialog.
+        """
         super().__init__(parent)
-        self.log = PlgLogger().log
+        self.log: Callable = PlgLogger().log
         self.plg_settings = PlgOptionsManager()
 
         # load UI and set objectName
-        self.setupUi(self)
+        uic.loadUi(Path(__file__).parent / f"{Path(__file__).stem}.ui", self)
         self.setObjectName("mOptionsPage{}".format(__title__))
+        self.initGui()
 
-        report_context_message = quote(
+    def initGui(self) -> None:  # noqa: N802
+        """Set up UI elements."""
+        # header
+        report_context_message: str = quote(
             "> Reported from plugin settings\n\n"
             f"- operating system: {platform.system()} "
             f"{platform.release()}_{platform.version()}\n"
@@ -87,16 +92,16 @@ class ConfigOptionsPage(FORM_CLASS, QgsOptionsPageWidget):
         )
 
         self.btn_reset.setIcon(QIcon(QgsApplication.iconPath("mActionUndo.svg")))
-        self.btn_reset.pressed.connect(self.reset_settings)
+        self.btn_reset.pressed.connect(self.on_reset_settings)
 
         # load previously saved settings
         self.load_settings()
 
-    def apply(self):
+    def apply(self) -> None:
         """Called to permanently apply the settings shown in the options page (e.g. \
         save them to QgsSettings objects). This is usually called when the options \
         dialog is accepted."""
-        settings = self.plg_settings.get_plg_settings()
+        settings: PlgSettingsStructure = self.plg_settings.get_plg_settings()
 
         # misc
         settings.debug_mode = self.opt_debug.isChecked()
@@ -111,17 +116,17 @@ class ConfigOptionsPage(FORM_CLASS, QgsOptionsPageWidget):
                 log_level=Qgis.MessageLevel.NoLevel,
             )
 
-    def load_settings(self):
+    def load_settings(self) -> None:
         """Load options from QgsSettings into UI form."""
-        settings = self.plg_settings.get_plg_settings()
+        settings: PlgSettingsStructure = self.plg_settings.get_plg_settings()
 
         # global
         self.opt_debug.setChecked(settings.debug_mode)
         self.lbl_version_saved_value.setText(settings.version)
 
-    def reset_settings(self):
+    def on_reset_settings(self) -> None:
         """Reset settings to default values (set in preferences.py module)."""
-        default_settings = PlgSettingsStructure()
+        default_settings: PlgSettingsStructure = PlgSettingsStructure()
 
         # dump default settings into QgsSettings
         self.plg_settings.save_from_object(default_settings)
@@ -133,19 +138,19 @@ class ConfigOptionsPage(FORM_CLASS, QgsOptionsPageWidget):
 class PlgOptionsFactory(QgsOptionsWidgetFactory):
     """Factory for options widget."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Constructor."""
         super().__init__()
 
     def icon(self) -> QIcon:
         """Returns plugin icon, used to as tab icon in QGIS options tab widget.
 
-        :return: _description_
+        :return: plugin's icon
         :rtype: QIcon
         """
         return QIcon(str(__icon_path__))
 
-    def createWidget(self, parent) -> ConfigOptionsPage:
+    def createWidget(self, parent: QWidget) -> ConfigOptionsPage:  # noqa: N802
         """Create settings widget.
 
         :param parent: Qt parent where to include the options page.
@@ -164,7 +169,7 @@ class PlgOptionsFactory(QgsOptionsWidgetFactory):
         """
         return __title__
 
-    def helpId(self) -> str:
+    def helpId(self) -> str:  # noqa: N802
         """Returns plugin help URL.
 
         :return: plugin homepage url from about module

@@ -11,12 +11,12 @@ class EnvVarParser:
     def get_env_var(name: str, default: T) -> T:
         """Retrieves an environment variable and converts it based on the default value type.
 
-        Args:
-            name (str): The environment variable name.
-            default (T): The default value, used to infer the expected type.
-
-        Returns:
-            T: The converted value, matching the type of `default`.
+        :param name: The environment variable name
+        :type name: str
+        :param default: The default value, used to infer the expected type
+        :type default: T
+        :return: The converted value, matching the type of `default`
+        :rtype: T
         """
         value = os.getenv(name)
         if value is None:
@@ -29,7 +29,18 @@ class EnvVarParser:
 
     @staticmethod
     def _convert_single(value: str, expected_type: Type[T], default: T) -> T:
-        """Converts a string into a single value of the expected type."""
+        """Converts a string into a single value of the expected type.
+
+        :param value: value as string
+        :type value: str
+        :param expected_type: expected type for conversion (int, float, bool)
+        :type expected_type: Type[T]
+        :param default: default value in case of conversion failure
+        :type default: T
+        :raises TypeError: Exception raised when expected_type is not compatible
+        :return: string value converted to expected_type
+        :rtype: T
+        """
         try:
             if expected_type is int:
                 return int(value)
@@ -48,7 +59,15 @@ class EnvVarParser:
 
     @staticmethod
     def _convert_bool(value: str, default: bool) -> bool:
-        """Converts a string into a boolean, handling explicit True/False values."""
+        """Converts a string into a boolean, handling explicit True/False values.
+
+        :param value: input string value
+        :type value: str
+        :param default: default value if conversion fails
+        :type default: bool
+        :return: converted str as bool
+        :rtype: bool
+        """
         true_values = {"1", "true", "yes", "on"}
         false_values = {"0", "false", "no", "off"}
         value_lower = value.lower()

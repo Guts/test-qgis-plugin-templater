@@ -7,7 +7,6 @@ import json
 import logging
 import sys
 from datetime import datetime
-from os import getenv
 from pathlib import Path
 from typing import Optional, Union
 
@@ -17,17 +16,11 @@ import keepachangelog
 # move into project package
 sys.path.insert(0, f"{Path(__file__).parent.parent.resolve()}")
 
-# 3rd party
-import sphinx_rtd_theme  # noqa: F401 theme of Read the Docs
-
 # Package
 from qgis_plugin_templater_test_github import __about__
 
 # -- Logging setup --
 logger: logging.Logger = logging.getLogger(__name__)
-
-# -- Build environment --
-on_rtd: bool = getenv("READTHEDOCS", None) == "True"
 
 # -- Project information --
 changes: dict[str, dict] = keepachangelog.to_dict("../CHANGELOG.md")

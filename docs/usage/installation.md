@@ -2,9 +2,7 @@
 
 ## Stable version (recomended)
 
-This plugin is published on the official QGIS plugins repository: <https://plugins.qgis.org/plugins/qgis_plugin_templater_test_github/>.
-
-### Using this plugin with QGIS Deployment Toolbelt (QDT)
+This plugin is published on the official QGIS plugins repository: <https://plugins.qgis.org/plugins/qgis_plugin_templater_test_github/>.### Using this plugin with QGIS Deployment Toolbelt (QDT)
 
 If you want to use this plugin with [QGIS Deployment Toolbelt (QDT)](https://qgis-deployment.github.io/qgis-deployment-toolbelt-cli/), you can add the following snippet to your `profile.json` file, under the `plugins` attribute:
 
@@ -13,7 +11,9 @@ If you want to use this plugin with [QGIS Deployment Toolbelt (QDT)](https://qgi
   :language: json
 ```
 
-Remember to replace the `version` attribute with the version you want to install.## Beta versions released
+Remember to replace the `version` attribute with the version you want to install.
+
+## Beta versions released
 
 Enable experimental extensions in the QGIS plugins manager settings panel.
 

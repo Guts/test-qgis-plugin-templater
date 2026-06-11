@@ -2,7 +2,7 @@ name: "📦 Package & 🚀 Release"
 
 env:
   PROJECT_FOLDER: qgis_plugin_templater_test_github
-  PYTHON_VERSION: 3.9
+  PYTHON_VERSION: "3.10"
 
 on:
   push:

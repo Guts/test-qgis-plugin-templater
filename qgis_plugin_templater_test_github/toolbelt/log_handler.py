@@ -3,7 +3,7 @@
 # standard library
 import logging
 from functools import partial
-from typing import Callable, Literal, Optional, Union
+from typing import Callable, Optional
 
 # PyQGIS
 from qgis.core import Qgis, QgsMessageLog, QgsMessageOutput
@@ -27,9 +27,7 @@ class PlgLogger(logging.Handler):
     def log(
         message: str,
         application: str = __title__,
-        log_level: Union[
-            Qgis.MessageLevel, Literal[0, 1, 2, 3, 4]
-        ] = Qgis.MessageLevel.Info,
+        log_level: Qgis.MessageLevel = Qgis.MessageLevel.Info,
         push: bool = False,
         duration: Optional[int] = None,
         # widget
@@ -41,8 +39,8 @@ class PlgLogger(logging.Handler):
         parent_location: Optional[QWidget] = None,
     ):
         """Send messages to QGIS messages windows and to the user as a message bar. \
-        Plugin name is used as title. If debug mode is disabled, only warnings (1) and \
-        errors (2) or with push are sent.
+        Plugin name is used as title. If debug mode is disabled, only warnings and \
+        errors or with push are sent.
 
         :param message: message to display
         :type message: str
@@ -50,11 +48,8 @@ class PlgLogger(logging.Handler):
         Defaults to __about__.__title__
         :type application: str, optional
         :param log_level: message level. Possible values: any values of enum \
-            `Qgis.MessageLevel`. For legacy purposes, it's also possible to pass \
-            corresponding integers but it's not recommended anymore. Legacy values: \
-            0 (info), 1 (warning), 2 (critical), 3 (success), 4 (none - grey). Defaults \
-            to Qgis.MessageLevel(0) (info)
-        :type log_level: Union[Qgis.MessageLevel, Literal[0, 1, 2, 3, 4]], optional
+            `Qgis.MessageLevel`. Defaults to Qgis.MessageLevel.INFO
+        :type log_level: Qgis.MessageLevel, optional
         :param push: also display the message in the QGIS message bar in addition to \
         the log, defaults to False
         :type push: bool, optional
@@ -84,7 +79,7 @@ class PlgLogger(logging.Handler):
         .. code-block:: python
 
             # using enums from Qgis:
-            # Qgis.Info, Qgis.MessageLevel.Warning, Qgis.MessageLevel.Critical, Qgis.MessageLevel.Success, Qgis.MessageLevel.NoLevel
+            # Qgis.MessageLevel.Info, Qgis.MessageLevel.Warning, Qgis.MessageLevel.Critical, Qgis.MessageLevel.Success, Qgis.MessageLevel.NoLevel
             from qgis.core import Qgis
 
             log(message="Plugin loaded - INFO", log_level=Qgis.MessageLevel.Info, push=False)
@@ -94,7 +89,7 @@ class PlgLogger(logging.Handler):
             )
             log(
                 message="Plugin failed to load - CRITICAL",
-                log_level=Qgis.MessageLevel(2),
+                log_level=Qgis.MessageLevel.Critical,
                 push=True
             )
 
@@ -122,12 +117,15 @@ class PlgLogger(logging.Handler):
         """
         # if not debug mode and not push, let's ignore INFO, SUCCESS and TEST
         debug_mode = plg_prefs_hdlr.PlgOptionsManager.get_plg_settings().debug_mode
-        if not debug_mode and not push and (log_level < 1 or log_level > 2):
+        if (
+            not debug_mode
+            and not push
+            and (
+                log_level < Qgis.MessageLevel.Warning
+                or log_level > Qgis.MessageLevel.Critical
+            )
+        ):
             return
-
-        # if log_level is an int, convert it to Qgis.MessageLevel
-        if isinstance(log_level, int):
-            log_level = Qgis.MessageLevel(log_level)
 
         # ensure message is a string
         if not isinstance(message, str):
@@ -158,7 +156,7 @@ class PlgLogger(logging.Handler):
 
             # calc duration
             if duration is None:
-                duration = (log_level + 1) * 3
+                duration = (int(log_level) + 1) * 3
 
             # create message with/out a widget
             if button:

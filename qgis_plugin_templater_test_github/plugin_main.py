@@ -33,7 +33,7 @@ from qgis_plugin_templater_test_github.toolbelt import PlgLogger
 
 
 class QgisPluginTemplaterTestGithubPlugin:
-    def __init__(self, iface: QgisInterface):
+    def __init__(self, iface: QgisInterface) -> None:
         """Constructor.
 
         :param iface: An interface instance that will be passed to this class which \
@@ -64,7 +64,7 @@ class QgisPluginTemplaterTestGithubPlugin:
             self.translator.load(str(locale_path.resolve()))
             QCoreApplication.installTranslator(self.translator)
 
-    def initGui(self):
+    def initGui(self) -> None:  # noqa: N802
         """Set up plugin UI elements."""
 
         # settings page within the QGIS preferences menu
@@ -115,7 +115,7 @@ class QgisPluginTemplaterTestGithubPlugin:
             self.action_help_plugin_menu_documentation
         )
 
-    def initProcessing(self):
+    def initProcessing(self) -> None:  # noqa: N802
         """Initialize the processing provider."""
         self.provider = QgisPluginTemplaterTestGithubProvider()
         QgsApplication.processingRegistry().addProvider(self.provider)
@@ -131,7 +131,7 @@ class QgisPluginTemplaterTestGithubPlugin:
         """
         return QCoreApplication.translate(self.__class__.__name__, message)
 
-    def unload(self):
+    def unload(self) -> None:
         """Cleans up when plugin is disabled/uninstalled."""
         # -- Clean up menu
         self.iface.removePluginMenu(__title__, self.action_help)

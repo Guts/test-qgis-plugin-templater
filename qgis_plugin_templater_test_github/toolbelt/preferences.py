@@ -1,11 +1,10 @@
 #! python3  # noqa: E265
 
-"""
-Plugin settings.
-"""
+"""Plugin settings."""
 
 # standard
 from dataclasses import asdict, dataclass, fields
+from typing import Any
 
 # PyQGIS
 from qgis.core import Qgis, QgsSettings
@@ -15,11 +14,12 @@ import qgis_plugin_templater_test_github.toolbelt.log_handler as log_hdlr
 from qgis_plugin_templater_test_github.__about__ import __title__, __version__
 from qgis_plugin_templater_test_github.toolbelt.env_var_parser import EnvVarParser
 
+# -- GLOBALS --
+PREFIX_ENV_VARIABLE = "QGIS_QGIS_PLUGIN_TEMPLATER_TEST_GITHUB_"
+
 # ############################################################################
 # ########## Classes ###############
 # ##################################
-
-PREFIX_ENV_VARIABLE = "QGIS_QGIS_PLUGIN_TEMPLATER_TEST_GITHUB_"
 
 
 @dataclass
@@ -31,15 +31,16 @@ class PlgEnvVariableSettings:
 
         :param attribute: attribute to check
         :type attribute: str
-        :param default_from_name: define default environnement value from attribute name PREFIX_ENV_VARIABLE_<upper case attribute>
+        :param default_from_name: define default environnement value from attribute name
+            PREFIX_ENV_VARIABLE_<upper case attribute>
         :type default_from_name: bool
         :return: environnement variable used
         :rtype: str
         """
-        settings_env_variable = asdict(self)
+        settings_env_variable: dict[str, Any] = asdict(self)
         env_variable = settings_env_variable.get(attribute, "")
         if not env_variable and default_from_name:
-            env_variable = f"{PREFIX_ENV_VARIABLE}{attribute}".upper()
+            env_variable: str = f"{PREFIX_ENV_VARIABLE}{attribute}".upper()
         return env_variable
 
 
@@ -92,16 +93,23 @@ class PlgOptionsManager:
         return options
 
     @staticmethod
-    def get_value_from_key(key: str, default=None, exp_type=None):
-        """Load and return plugin settings as a dictionary. \
-        Useful to get user preferences across plugin logic.
+    def get_value_from_key(key: str, default=None, expected_type=None) -> None | Any:
+        """Return the value of a plugin setting by its key.
 
-        :return: plugin settings value matching key
+        :param key: setting key, must be an attribute of PlgSettingsStructure
+        :type key: str
+        :param default: fallback value if the key is not found, defaults to None
+        :type default: Any, optional
+        :param expected_type: expected type for deserialization by QgsSettings, defaults to None
+        :type expected_type: type or None, optional
+
+        :return: setting value, or None if the key is invalid or an error occurred
+        :rtype: Any
         """
         if not hasattr(PlgSettingsStructure, key):
             log_hdlr.PlgLogger.log(
                 message="Bad settings key. Must be one of: {}".format(
-                    ",".join(PlgSettingsStructure._fields)
+                    ",".join(f.name for f in fields(PlgSettingsStructure))
                 ),
                 log_level=Qgis.MessageLevel.Warning,
             )
@@ -111,12 +119,14 @@ class PlgOptionsManager:
         settings.beginGroup(__title__)
 
         try:
-            out_value = settings.value(key=key, defaultValue=default, type=exp_type)
+            out_value = settings.value(
+                key=key, defaultValue=default, type=expected_type
+            )
         except Exception as err:
             log_hdlr.PlgLogger.log(
-                message="Error occurred trying to get settings: {}.Trace: {}".format(
-                    key, err
-                )
+                message=f"Error occurred trying to get settings: {key}. Trace: {err}",
+                log_level=Qgis.MessageLevel.Warning,
+                push=False,
             )
             out_value = None
 
@@ -126,19 +136,20 @@ class PlgOptionsManager:
 
     @classmethod
     def set_value_from_key(cls, key: str, value) -> bool:
-        """Set plugin QSettings value using the key.
+        """Set plugin setting value using the key.
 
-        :param key: QSettings key
+        :param key: setting key, must be an attribute of PlgSettingsStructure
         :type key: str
         :param value: value to set
-        :type value: depending on the settings
-        :return: operation status
+        :type value: Any
+
+        :return: True if the value was saved successfully, False otherwise
         :rtype: bool
         """
         if not hasattr(PlgSettingsStructure, key):
             log_hdlr.PlgLogger.log(
-                message="Bad settings key. Must be one of: {}".format(
-                    ",".join(PlgSettingsStructure._fields)
+                message="Bad settings key: {}. Must be one of: {}".format(
+                    key, ",".join(f.name for f in fields(PlgSettingsStructure))
                 ),
                 log_level=Qgis.MessageLevel.Critical,
             )
@@ -150,11 +161,15 @@ class PlgOptionsManager:
         try:
             settings.setValue(key, value)
             out_value = True
+            log_hdlr.PlgLogger.log(
+                message=f"Setting `{key}` saved with value `{value}`",
+                log_level=Qgis.MessageLevel.NoLevel,
+            )
         except Exception as err:
             log_hdlr.PlgLogger.log(
-                message="Error occurred trying to set settings: {}.Trace: {}".format(
-                    key, err
-                )
+                message=f"Error occurred trying to set settings: {key}. Trace: {err}",
+                log_level=Qgis.MessageLevel.Warning,
+                push=False,
             )
             out_value = False
 
@@ -163,16 +178,11 @@ class PlgOptionsManager:
         return out_value
 
     @classmethod
-    def save_from_object(cls, plugin_settings_obj: PlgSettingsStructure):
-        """Load and return plugin settings as a dictionary. \
-        Useful to get user preferences across plugin logic.
+    def save_from_object(cls, plugin_settings_obj: PlgSettingsStructure) -> None:
+        """Save plugin settings from a PlgSettingsStructure object.
 
-        :return: plugin settings value matching key
+        :param plugin_settings_obj: settings object to persist
+        :type plugin_settings_obj: PlgSettingsStructure
         """
-        settings = QgsSettings()
-        settings.beginGroup(__title__)
-
         for k, v in asdict(plugin_settings_obj).items():
             cls.set_value_from_key(k, v)
-
-        settings.endGroup()
