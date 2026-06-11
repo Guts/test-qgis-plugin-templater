@@ -17,7 +17,7 @@ on:
 
 env:
   PROJECT_FOLDER: "qgis_plugin_templater_test_github"
-  PYTHON_VERSION: 10
+  PYTHON_VERSION: "3.10"
 
 
 jobs:
