@@ -3,6 +3,6 @@
 
 keepachangelog>=2.0.0
 myst-parser[linkify]>=2
-sphinx-autobuild>=2024
+sphinx-autobuild>=2025.8.25
 sphinx-copybutton>=0.5
 sphinx-rtd-theme>=2
