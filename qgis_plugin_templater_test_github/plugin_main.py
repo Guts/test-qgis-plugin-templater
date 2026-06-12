@@ -96,7 +96,6 @@ class QgisPluginTemplaterTestGithubPlugin:
         self.iface.addPluginToMenu(__title__, self.action_help)
         # -- Processing
         self.initProcessing()
-
         # -- Help menu
 
         # documentation
