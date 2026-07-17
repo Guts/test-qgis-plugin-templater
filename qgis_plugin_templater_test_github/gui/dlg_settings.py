@@ -79,6 +79,7 @@ class ConfigOptionsPage(QgsOptionsPageWidget):
         self.btn_report.setIcon(
             QIcon(QgsApplication.iconPath("console/iconSyntaxErrorConsole.svg"))
         )
+
         self.btn_report.pressed.connect(
             partial(
                 QDesktopServices.openUrl,

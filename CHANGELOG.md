@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 -->
 
-## 0.1.0 - 2026-06-12
+## 0.1.0 - 2026-07-17
 
 - First release
 - Generated with the [QGIS Plugins templater](https://oslandia.gitlab.io/qgis/template-qgis-plugin/)
