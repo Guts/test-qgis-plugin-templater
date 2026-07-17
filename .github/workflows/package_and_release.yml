@@ -38,7 +38,8 @@ jobs:
       - name: Install translation requirements
         run: |
           sudo apt update
-          sudo apt install qt5-qmake qttools5-dev-tools pyqt5-dev-tools
+          sudo apt install qt5-qmake qttools5-dev-tools
+          python3 -m pip install -U pyqt5-tools
 
       - name: Update translations
         run: |
@@ -105,7 +106,7 @@ jobs:
         with:
           name: ${{ env.PROJECT_FOLDER }}-latest
           path: |
-            plugins.xml
+            plugins.x*l
             ${{ env.PROJECT_FOLDER }}.*.zip
           if-no-files-found: error
 
